@@ -2,6 +2,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Feed from "../../pages/Feed";
 import Messages from "../../pages/Messages";
 import Profile from "../../pages/Profile";
+import Login from "../../pages/Login/Login";
 import "./View.css";
 
 export default function View() {
@@ -10,6 +11,7 @@ export default function View() {
       <div className="container th-view__inner">
         <Routes>
           <Route path="/" element={<Feed />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/messages" element={<Messages />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<Navigate to="/" replace />} />
