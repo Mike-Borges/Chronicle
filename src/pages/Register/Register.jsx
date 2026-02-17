@@ -1,11 +1,12 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./Login.css";
-import "../Register/Register.css";
+import "../Login/Login.css";
+import "./Register.css";
 
-export default function Login({ onLogin }) {
+export default function Register({ onLogin }) {
   const navigate = useNavigate();
-  const [identifier, setIdentifier] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,10 +17,10 @@ export default function Login({ onLogin }) {
     setLoading(true);
 
     try {
-      const res = await fetch("/api/auth/login", {
+      const res = await fetch("/api/auth/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ identifier, password }),
+        body: JSON.stringify({ username, email, password }),
       });
 
       const data = await res.json();
@@ -43,20 +44,34 @@ export default function Login({ onLogin }) {
     <div className="login-container">
       <div className="login-card">
         <div className="login-image-circle"></div>
-        <h1 className="login-title">Be Close Again!</h1>
+        <h1 className="login-title">Join the Thread!</h1>
 
         {error && <p className="auth-error">{error}</p>}
 
         <form className="login-form" onSubmit={handleSubmit}>
           <div className="form-group">
-            <label htmlFor="identifier">Email or Username</label>
+            <label htmlFor="username">Username</label>
             <input
               type="text"
-              id="identifier"
-              name="identifier"
-              placeholder="Email or username..."
-              value={identifier}
-              onChange={(e) => setIdentifier(e.target.value)}
+              id="username"
+              name="username"
+              placeholder="Choose a username..."
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              required
+              minLength={3}
+            />
+          </div>
+
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="example@email.com"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
@@ -67,10 +82,11 @@ export default function Login({ onLogin }) {
               type="password"
               id="password"
               name="password"
-              placeholder="Enter password..."
+              placeholder="At least 6 characters..."
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              minLength={6}
             />
           </div>
 
@@ -78,12 +94,12 @@ export default function Login({ onLogin }) {
             <button
               type="button"
               className="btn-register"
-              onClick={() => navigate("/register")}
+              onClick={() => navigate("/login")}
             >
-              Register
+              Back to Login
             </button>
             <button type="submit" className="btn-signin" disabled={loading}>
-              {loading ? "Signing in..." : "Sign-In"}
+              {loading ? "Creating..." : "Register"}
             </button>
           </div>
         </form>
