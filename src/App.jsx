@@ -1,14 +1,36 @@
 import { useState } from "react";
+import { Routes, Route } from "react-router-dom";
+import Header from "./components/Header/Header";
+import Nav from "./components/Nav/Nav";
+import View from "./components/View/View";
+import Login from "./pages/Login/Login";
+import Register from "./pages/Register/Register";
 
-import Login from "./pages/Login/Login.jsx";
-import "./App.css";
+export default function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(() => !!localStorage.getItem("token"));
 
-function App() {
+  const handleLogin = () => setIsLoggedIn(true);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    setIsLoggedIn(false);
+  };
+
+  if (!isLoggedIn) {
+    return (
+      <Routes>
+        <Route path="/register" element={<Register onLogin={handleLogin} />} />
+        <Route path="*" element={<Login onLogin={handleLogin} />} />
+      </Routes>
+    );
+  }
+
   return (
     <>
-      <Login />
+      <Header onLogout={handleLogout} />
+      <Nav />
+      <View />
     </>
   );
 }
-
-export default App;
