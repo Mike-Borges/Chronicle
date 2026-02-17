@@ -19,3 +19,20 @@
   background: var(--paper);
   font-size: 13px;
 }
+.th-header__right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.th-header__logout {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.th-header__logout:hover {
+  background: #e8e0d8;
+}
