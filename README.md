@@ -1,4 +1,4 @@
-# Chronicle
+Chronicle
 
 A friendship timeline application where users can preserve and share memories with friends through posts, photos, and messaging.
 
@@ -13,6 +13,24 @@ Chronicle helps you stay connected with the people who matter most. Build timeli
 - 📝 Timeline posts with text and photo uploads
 - 💬 Messaging (coming soon)
 - 📱 Responsive design (coming soon)
+
+---
+
+## 🌐 Live Deployment
+
+**Live App:** [https://chronicle-ashen.vercel.app](https://chronicle-ashen.vercel.app)
+
+The application is deployed using:
+
+- **Frontend:** Vercel (React build)
+- **Backend:** Render (Express API server)
+- **Database:** MongoDB Atlas (cloud database)
+
+### Deployment Architecture
+
+- Frontend proxies API requests to the backend via environment variable `VITE_API_URL`
+- Backend connects to MongoDB Atlas using `MONGO_URI` environment variable
+- JWT authentication via `JWT_SECRET` environment variable
 
 ---
 
@@ -55,7 +73,7 @@ Chronicle helps you stay connected with the people who matter most. Build timeli
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/your-username/chronicle.git
+   git clone https://github.com/Mike-Borges/Chronicle.git
    cd chronicle
    ```
 
@@ -135,6 +153,7 @@ chronicle/
 │   │   └── tokens.css
 │   ├── App.jsx            # Main app component & routes
 │   ├── App.css
+│   ├── config.js          # API URL configuration
 │   ├── index.css
 │   └── main.jsx           # React entry point
 ├── .env                   # Environment variables (not tracked)
@@ -150,11 +169,27 @@ chronicle/
 
 ## 🔑 Environment Variables
 
+### Local Development
+
 | Variable     | Purpose                           | Example                               |
 | ------------ | --------------------------------- | ------------------------------------- |
 | `MONGO_URI`  | MongoDB connection string         | `mongodb://localhost:27017/chronicle` |
 | `JWT_SECRET` | Secret key for signing JWT tokens | `mysecretkey123`                      |
 | `PORT`       | Backend server port (optional)    | `5000`                                |
+
+### Production (Vercel Frontend)
+
+| Variable       | Purpose         | Example                                       |
+| -------------- | --------------- | --------------------------------------------- |
+| `VITE_API_URL` | Backend API URL | `https://chronicle-backend-edbk.onrender.com` |
+
+### Production (Render Backend)
+
+| Variable     | Purpose                           | Example                                                        |
+| ------------ | --------------------------------- | -------------------------------------------------------------- |
+| `MONGO_URI`  | MongoDB Atlas connection string   | `mongodb+srv://user:pass@cluster0.xxxxx.mongodb.net/chronicle` |
+| `JWT_SECRET` | Secret key for signing JWT tokens | `mysecretkey123`                                               |
+| `PORT`       | Backend server port               | `10000` (Render default)                                       |
 
 ⚠️ **Security Note:** Never commit your `.env` file. It's already included in `.gitignore`.
 
@@ -238,15 +273,15 @@ This project is being developed by a team of 4:
 
 ---
 
-## 📄 Figma & Deployment
+## 📄 Figma Design
 
-[Figma](https://www.figma.com/design/kBSR4S5QiA2hMmnm6IAu5m)
+[View Figma Design](https://www.figma.com/design/kBSR4S5QiA2hMmnm6IAu5m)
 
 ---
 
 ## 👥 Team
 
-Built by Michael Borges SE, Jordan Campbell SE, Caitlin Forcier UX/UI, & Imani Gordon UX/UI
+Built by Michael Borges (SE), Jordan Campbell (SE), Caitlin Forcier (UX/UI), & Imani Gordon (UX/UI)
 
 ---
 
