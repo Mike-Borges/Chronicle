@@ -169,14 +169,6 @@ chronicle/
 
 ## 🔑 Environment Variables
 
-### Local Development
-
-| Variable     | Purpose                           | Example                               |
-| ------------ | --------------------------------- | ------------------------------------- |
-| `MONGO_URI`  | MongoDB connection string         | `mongodb://localhost:27017/chronicle` |
-| `JWT_SECRET` | Secret key for signing JWT tokens | `mysecretkey123`                      |
-| `PORT`       | Backend server port (optional)    | `5000`                                |
-
 ### Production (Vercel Frontend)
 
 | Variable       | Purpose         | Example                                       |
